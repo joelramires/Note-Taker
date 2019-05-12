@@ -37,7 +37,7 @@ app.post("/api/notes", function (req, res) {
 });
 
 app.delete("/api/notes/:id", function (req, res) {
-  connection.query("DELETE FROM notes WHERE id = ?", [req.params.id], function (err, result) {
+  connection.query("DELETE FROM noteTaker WHERE id = ?", [req.params.id], function (err, result) {
     if (err) res.status(500).end();
 
     res.json(result);
