@@ -19,7 +19,7 @@ app.get("/notes", function (req, res) {
 });
 
 app.get("/api/notes", function (req, res) {
-  connection.query("SELECT * FROM noteBook", function (err, notes) {
+  connection.query("SELECT * FROM noteTaker", function (err, notes) {
     if (err) {
       return res.status(500).json(err);
     }
@@ -29,7 +29,7 @@ app.get("/api/notes", function (req, res) {
 });
 
 app.post("/api/notes", function (req, res) {
-  connection.query("INSERT INTO noteBook SET ?", req.body, function (err, result) {
+  connection.query("INSERT INTO noteTaker SET ?", req.body, function (err, result) {
     if (err) return res.status(500).json(err);
 
     res.json({ status: 'successful' });
@@ -37,7 +37,7 @@ app.post("/api/notes", function (req, res) {
 });
 
 app.delete("/api/notes/:id", function (req, res) {
-  connection.query("DELETE FROM noteBook WHERE id = ?", [req.params.id], function (err, result) {
+  connection.query("DELETE FROM notes WHERE id = ?", [req.params.id], function (err, result) {
     if (err) res.status(500).end();
 
     res.json(result);
